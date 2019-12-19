@@ -1,0 +1,52 @@
+{
+    "name": "OnSched",
+    "description": "<p>Build secure and scalable custom apps for Online Booking. Our flexible API provides many options for availability and booking. OnSched is an API first booking software that allows you to bring your design to life by creating your own booking flow. Using our robust API you can customize the interaction between your consumers and vendors while we do all the leg work behind the scenes. Want to offer online booking to your vendors? Ask about our white labelling solutions and rebrand our software as your own.<\/p>",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/logos\/onsched-logo.png",
+    "tags": [
+        "api provider",
+        "bookings",
+        "have api",
+        "relative data",
+        "schedules",
+        "service api"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/onsched\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "OnSched API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/logos\/onsched-logo.png",
+            "humanURL": "http:\/\/www.onsched.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/onsched-api-openapi.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/onsched-api.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "Documentation",
+            "url": "https:\/\/www.onsched.com\/api\/docs\/"
+        },
+        {
+            "type": "Pricing",
+            "url": "https:\/\/www.onsched.com\/index.html#self-service"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/www.onsched.com"
+        }
+    ]
+}
