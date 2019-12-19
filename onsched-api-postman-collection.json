@@ -1,0 +1,1790 @@
+{
+    "id": "dea6e8e0c40e38bfdb50d0ede821f299",
+    "name": "OnSched API",
+    "description": null,
+    "auth": null,
+    "events": null,
+    "variables": [],
+    "order": [],
+    "folders_order": [],
+    "folders": [],
+    "requests": [
+        {
+            "id": "efeb7f0f06f688300efe3ba6087782f2",
+            "name": "Returns a list of appointments.",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/appointments",
+            "description": "The results are returned in pages. Use the offset and limit parameters to control the page start and size. Default offset is 0, and limit is 20.\r\nUse the other query parameters to optionally filter the results list.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "locationId",
+                    "description": "The id of the business location. Defaults to first business location.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "email",
+                    "description": "Filter appointments by email address.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "serviceId",
+                    "description": "Filter appointments by service.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "resourceId",
+                    "description": "Filter appointments by resource.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "customerId",
+                    "description": "Filter appointments by customer.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "status",
+                    "description": "Filter appointments by status: IN, BK, CN, RE, RS.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "offset",
+                    "description": "Starting row of page, default 0",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "Page limit, default 20. Maximum 100.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "8c235d2e560c1aeba5aa940f7a70b735",
+            "name": "Returns an appointment object",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/appointments",
+            "description": "This end point creates a new appointment in an Initial \"IN\" status. \r\n\r\nA valid serviceId is required. Use GET consumer\/v1\/services to retrieve a list of your services.\r\n\r\nA valid resourceId is required if your calendar is a resource based calendar. Use consumer\/v1\/resources to retrieve a list of your resources.\r\n\r\nStartDateTime and EndDateTime are required. Use the ISO 8601 format for DateTime Timezone. e.g. 2016-10-30T9:00:00-5:00",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "appointmentIM",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "3b09e904a31bee544049bd7b84a23bd6",
+            "name": "Returns an appointment object.",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/appointments\/{id}",
+            "description": "The result returned is a single appointment object. A valid id is required to find the appointment. \r\n\r\nFind appointment id's using the GET consumer\/v1\/appointments end point.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "id",
+                    "description": "The id of the appointment object.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "5f3b87e452d55b5922d1a184dbbfd787",
+            "name": "Returns an appointment object",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/appointments\/{id}",
+            "description": "This end point deletes a booking. Only appointments in a \"IN\" initial status can be deleted.\r\nPast dated appointments cannot be cancelled.\r\n\r\nA valid appointment id is required. Use the appointmentId returned from GET \/consumer\/v1\/appointments",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "id",
+                    "description": "The id of the appointment object.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "e216316de26ac4cfed9e7614615ffaa9",
+            "name": "Returns an appointment object",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/appointments\/{id}\/book",
+            "description": "This end point completes a new booking. Only appointments in the \"IN\" initial status can be booked.\r\nby saving all the relevant details of the booking.\r\n\r\nA valid appointment id is required. Use the appointmentId returned from POST \/consumer\/v1\/appointments\r\n\r\nTo update appointment custom field values, use the GET \/consumer\/v1\/appointments\/customfields information\r\nto understand your definitions of custom fields and what key and values to update.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "put",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "id",
+                    "description": "The id of the appointment object.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "appointmentBookModel",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "ad323c95603be07a0804e956336f8df6",
+            "name": "Returns an appointment object",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/appointments\/{id}\/cancel",
+            "description": "This end point cancels a booking or reservation. Only appointments in a \"BK\" booked, or \"RS\" reserved status can be cancelled.\r\nPast dated appointments cannot be cancelled.\r\n\r\nA valid appointment id is required. Use the appointmentId returned from POST \/consumer\/v1\/appointments",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "put",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "id",
+                    "description": "The id of the appointment object.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "18b4ec52ae50171843c6f63deccaed92",
+            "name": "Returns an appointment object",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/appointments\/{id}\/reschedule",
+            "description": "This end point reschedules a booking. Only appointments in a \"BK\" booked status can be rescheduled.\r\nPast dated appointments cannot be cancelled.\r\n\r\nA valid appointment id is required. Use the appointmentId returned from GET \/consumer\/v1\/appointments.\r\n\r\nThe serviceId and resourceId are optional. If you want your users to change the resource or service on a reschedule\r\nyou will have to use the regular availability endpoint rather than the reschedule availability end point.\r\n\r\nUse the GET \/consum",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "put",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "id",
+                    "description": "The id of the appointment object.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "appointmentRM",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "e72d73f6706195eb677b7823d03b7cf9",
+            "name": "Returns a list of appointment custom field definitions",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/appointments\/customfields",
+            "description": "This end point returns your Appointment custom field definitions.\r\n\r\nAppointment custom fields are different than Customer custom fields. Appointment custom fields are\r\nstored with each appointment. They are used when the information collected during the booking is specific\r\nto a particular visit.\r\n\r\nUse the field, and type to determine how to update field values\r\nin PUT \/consumer\/v1\/appointments\/{id}\/book",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "locationId",
+                    "description": "The id of the business location. Defaults to first business location.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "a7cf6542ba1e4b59bd2389cccb83b16c",
+            "name": "",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/appointments\/bookingfields",
+            "description": "",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "locationId",
+                    "description": "The id of the business location. Defaults to first business location.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "0a86e0b46bd4400d0e8992a8950b7889",
+            "name": "Returns a list of available times.",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/availability\/{serviceId}\/{startDate}\/{endDate}",
+            "description": "Choose your search criteria carefully. Availability is an expensive call. If you search availability for all resources\r\nthen you should only do so for a single date. If you decide to search availability for multiple dates you should only do so\r\nfor a specific resource by specifying the optional resourceId parameter.\r\n\r\nStart and End times are specified as military times e.g. 800 = 8:00am, 2230 = 10:30pm. \r\nYou will only see availability within the boundary of your business start and end times.\r\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "serviceId",
+                    "description": "Service Id for availability search.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "startDate",
+                    "description": "Start Date for availability search.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "endDate",
+                    "description": "End Date for availability search.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "startTime",
+                    "description": "Start Time for availability search. Defaults to Business Hours Start.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "endTime",
+                    "description": "End Time for availability search. Defaults to Business Hours End.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "locationId",
+                    "description": "The id of the business location. Defaults to first business location.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "resourceId",
+                    "description": "Filter appointments by resource.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "resourceGroupId",
+                    "description": "Resource Group Id for availability search.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "resourceIds",
+                    "description": "Comma separated Resource Id's for availability search.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "duration",
+                    "description": "Duration of the service if different than the default.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "tzOffset",
+                    "description": "Request timezone offset to view availability.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "dayAvailability",
+                    "description": "Return day availability for number of days specified.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "firstDayAvailable",
+                    "description": "Return available times for the first available day.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "850da6e4fdaee635b0218e93ea4e8973",
+            "name": "Returns a list of available days.",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/availability\/{serviceId}\/{startDate}\/{endDate}\/days",
+            "description": "This end point is used to show day level availability. For example if the business is closed, or there is a public holiday.\r\n\r\nDay level availability is a good way to restrict your choices of dates in your app and improve usability.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "serviceId",
+                    "description": "Service Id for availability search.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "startDate",
+                    "description": "Start Date for availability search.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "endDate",
+                    "description": "End Date for availability search.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "locationId",
+                    "description": "The id of the business location. Defaults to first business location.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "resourceId",
+                    "description": "Filter appointments by resource.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "tzOffset",
+                    "description": "Request timezone offset to view availability.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "cdd7c145ff4272077933f110ebdbfbbc",
+            "name": "Returns a list of unavailable times.",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/availability\/{serviceId}\/{startDate}\/{endDate}\/unavailable",
+            "description": "This endpoint is used to show unavailable times and provides information why the timeslot is unavailable.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "serviceId",
+                    "description": "Service Id for availability search.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "startDate",
+                    "description": "Start Date for availability search.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "endDate",
+                    "description": "End Date for availability search.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "locationId",
+                    "description": "The id of the business location. Defaults to first business location.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "resourceId",
+                    "description": "Filter appointments by resource.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "duration",
+                    "description": "Duration of the service if different than the default.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "tzOffset",
+                    "description": "Request timezone offset to view availability.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "bbeaa763a3920d656a5aa467a39ddb92",
+            "name": "Returns a list of available times.",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/availability\/{appointmentId}\/reschedule",
+            "description": "This end point is used to find availability for the purpose of rescheduling an appointment.\r\nAvailability defaults to the serviceId, resourceId and timezone from the original appointment.\r\nAfter choosing from the availability, you can call the appointment reschedule endpoint.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "appointmentId",
+                    "description": "Appointment Id of the original appointment being rescheduled.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "tzOffset",
+                    "description": "Request timezone offset to view availability.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "1361f4409cdbf4849f80892fe357dd52",
+            "name": "Returns a list of customers.",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers",
+            "description": "The results are returned in pages. Use the offset and limit parameters to control the page start and size. Default offset is 0, and limit is 20.\r\nUse the other query parameters to optionally filter the results list.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "locationId",
+                    "description": "The id of the business location. Defaults to first business location.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "groupId",
+                    "description": "Filter customers by group.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "email",
+                    "description": "Filter appointments by email address.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "lastname",
+                    "description": "Search customers by lastname.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "deleted",
+                    "description": "Filter customers by deleted status.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "offset",
+                    "description": "Starting row of page, default 0",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "Page limit, default 20. Maximum 100.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "b21886254814fc9a2b97d3e5ae6c1a34",
+            "name": "Creates a new customer object.",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers",
+            "description": "Use this endpoint to create a new customer. If not specified the business location id defaults to the first location in the company.\r\nEmail Address and a lastname are required for creating a new customer.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "customerIM",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "d92e5e97aa222a3805de2ead7881eea2",
+            "name": "Returns a customer object.",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers\/{id}",
+            "description": "The result returned is a single customer object. An id is required to find the customer. Find customer id's using either the GET consumer\/v1\/customers end point,\r\nor the GET consumer\/v1\/appointments end point. A customer object is automatically created with the first booking if it doesn't already exist.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "id",
+                    "description": "The id of the appointment object.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "72333d5a31465ef2504981826f5488ce",
+            "name": "Updates a customer object.",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers\/{id}",
+            "description": "Use this endpoint to update customer information. If not specified the business location id defaults to the first location in the company.\r\nBlank fields are not changed",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "put",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "id",
+                    "description": "The id of the appointment object.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "customerUM",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "8773db35206d3ea720ac9f4e5a7fbcaf",
+            "name": "Deletes a customer subscription object.",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers\/{id}",
+            "description": "Deletes a customer subscription object.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "id",
+                    "description": "The id of the appointment object.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "58492aec68b05b5e17bafa9fff374f9e",
+            "name": "Returns a list of customField objects",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers\/customfields",
+            "description": "This end point returns your Customer custom field definitions.\r\n\r\nCustomer custom fields are different than Appointment custom fields. Appointment custom fields are\r\nstored with each appointment. They are used when the information collected during the booking is specific\r\nto a particular visit, where as Customer custom fields are stored with the customer profile. \r\n\r\nUse the key field, and type to determine how to update field values\r\nin POST \/consumer\/v1\/customers and PUT \/consumer\/v1\/customers",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "locationId",
+                    "description": "The id of the business location. Defaults to first business location.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "leadQuestions",
+                    "description": "A true\/false indicator to filter on custom fields used for lead questions.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "df132e1b069ce63974a8385626977058",
+            "name": "Returns a list of lead questions",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers\/registrationfields",
+            "description": "This end point returns your Customer Registration fields.\r\n\r\nCustomer custom fields are different than Appointment custom fields. Appointment custom fields are\r\nstored with each appointment. They are used when the information collected during the booking is specific\r\nto a particular visit, where as Customer custom fields are stored with the customer profile.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "locationId",
+                    "description": "The id of the business location. Defaults to first business location.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "a680f5c154b055618f70c3fe21c55dee",
+            "name": "Returns a list of customers.",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers\/plans",
+            "description": "The results are returned in pages. Use the offset and limit parameters to control the page start and size. Default offset is 0, and limit is 20.\r\nUse the other query parameters to optionally filter the results list.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "locationId",
+                    "description": "The id of the business location. Defaults to first business location.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "groupId",
+                    "description": "Filter customers by group.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "offset",
+                    "description": "Starting row of page, default 0",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "Page limit, default 20. Maximum 100.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "7986df0311fd9319de89714d6a1ba822",
+            "name": "Returns a customer object.",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers\/plans\/{id}",
+            "description": "The result returned is a single customer object. An id is required to find the customer. Find customer id's using either the GET consumer\/v1\/customers end point,\r\nor the GET consumer\/v1\/appointments end point. A customer object is automatically created with the first booking if it doesn't already exist.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "id",
+                    "description": "The id of the appointment object.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "9fcf10661fc0ac2fa606220a8509d24c",
+            "name": "Returns a list of customer booking limits.",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers\/{id}\/planlimits\/{serviceId}\/{resourceId}\/{dateTimeTz}",
+            "description": "The result returned is list of limit rules as defined by the subscribed customer plan along with Booking Counts\/Minutes\r\nThe results indicate the remaining bookings count \/ minutes. Use the results in your app to determine if the customer should continue booking.\r\nYou can enforce Limits in periods: Daily,Weekly,Monthly and for maximum total limits. Maximum total limits is based on six months prior to\r\nthe DateTimeTz and six months after the DateTimeTz. Daily, Weekly and Monthly limits are based ",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "id",
+                    "description": "The id of the appointment object.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "serviceId",
+                    "description": "Service Id for availability search.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "resourceId",
+                    "description": "The id of the resource object.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "dateTimeTz",
+                    "description": "The DateTimeTz to check",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "f9741cd748d559e423461d9dcc9bd4d1",
+            "name": "Returns a list of customer subscriptions.",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers\/subscriptions",
+            "description": "The results are returned in pages. Use the offset and limit parameters to control the page start and size. Default offset is 0, and limit is 20.\r\nUse the other query parameters to optionally filter the results list.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "locationId",
+                    "description": "The id of the business location. Defaults to first business location.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "offset",
+                    "description": "Starting row of page, default 0",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "Page limit, default 20. Maximum 100.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "090bfa642beba303f0a931ebd2a7d6a7",
+            "name": "Returns a customer subscription object.",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers\/{id}\/subscriptions",
+            "description": "The result returned is a single customer subscription object. A customer can only be subsribed to a single Customer Plan",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "id",
+                    "description": "The id of the appointment object.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "4c77e7950644386848d635b39f836c01",
+            "name": "Creates a new customer subscription object.",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers\/{id}\/subscriptions",
+            "description": "Use this endpoint to create a new customer subscription.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "id",
+                    "description": "The id of the appointment object.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "customerSubscriptionIM",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "b77517d3e9540b529bc9a1cd200710d0",
+            "name": "Returns a customer subscription object.",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers\/subscriptions\/{id}",
+            "description": "The result returned is a single customer subscription object.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "id",
+                    "description": "The id of the appointment object.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "775922459ea96062a601331452dc2813",
+            "name": "Updates a customer subscription object.",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers\/subscriptions\/{id}",
+            "description": "Use this endpoint to update customer subscription information.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "put",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "id",
+                    "description": "The id of the appointment object.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "customerSubscriptionUM",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "c3068f580e0114ad7509561d526d8aca",
+            "name": "Deletes a list of lead questions",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers\/subscriptions\/{id}",
+            "description": "Deletes a list of lead questions",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "id",
+                    "description": "The id of the appointment object.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "a929214f560eca7d5dc8f1ffa58a28f3",
+            "name": "Returns a list of country objects",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers\/countries",
+            "description": "Returns a list of countries with the associated country code. Country codes are based on the 2 character ANSI standard.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "af4932f60fd9d05cfdc7ab2492b73cfc",
+            "name": "Returns a list of state objects",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers\/states",
+            "description": "Returns a list of states with the associated state code and country. \r\n\r\nContact us if states for your countries of operation are not currently loaded.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "country",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "7d5c0ec736af797eed785192a75df9c9",
+            "name": "Returns a list of business locations.",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/locations",
+            "description": "Use this api end point if you have multiple business locations in your company.\r\nThe results are returned in pages. Use the offset and limit parameters to control the page start and size. Default offset is 0, and limit is 20.\r\nUse the other query parameters to optionally filter the results list.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "name",
+                    "description": "Location name(full or partial) to filter on",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "offset",
+                    "description": "Starting row of page, default 0",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "Page limit, default 20. Maximum 100.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "0d31d5f8a7e1c0414682c13f3662aaed",
+            "name": "Returns a business location object.",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/locations\/{id}",
+            "description": "The result returned is a single location object. An id is required to find the location. Find location id's using the GET consumer\/v1\/locations end point,",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "id",
+                    "description": "The id of the appointment object.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "1e75d3175ba6a614990d83bf61e4842e",
+            "name": "Returns a list of resources.",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/resources",
+            "description": "The results are returned in pages. Use the offset and limit parameters to control the page start and size. Default offset is 0, and limit is 20.\r\nUse the other query parameters to optionally filter the results list.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "locationId",
+                    "description": "The id of the business location. Defaults to first business location.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "resourceGroupId",
+                    "description": "Resource Group Id for availability search.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "email",
+                    "description": "Filter appointments by email address.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "name",
+                    "description": "Location name(full or partial) to filter on",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "sortOrder",
+                    "description": "Specify sort order of response.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "offset",
+                    "description": "Starting row of page, default 0",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "Page limit, default 20. Maximum 100.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "a7e98053e61dc14ad613ac81bcfc9600",
+            "name": "Returns a resource object.",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/resources\/{id}",
+            "description": "The result returned is a single resource object. An id is required to find the resource. Find customer id's using either the GET consumer\/v1\/resources end point,\r\nor the GET consumer\/v1\/appointments end point.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "id",
+                    "description": "The id of the appointment object.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "e9edebbf9846e0a704ed23243add32ba",
+            "name": "Returns a list of resource services.",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/resources\/{id}\/services",
+            "description": "The results are returned in pages. Use the offset and limit parameters to control the page start and size. Default offset is 0, and limit is 20.\r\nUse the other query parameters to optionally filter the results list.\r\nResource services are used to explicitly define the services that can be booked for a resource. If no resource services are defined then by\r\ndefault all services can be booked for the resource.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "id",
+                    "description": "The id of the appointment object.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "offset",
+                    "description": "Starting row of page, default 0",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "Page limit, default 20. Maximum 100.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "0169b95832f186a5a3659c1d98c5b50d",
+            "name": "Returns a list of service groups.",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/servicegroups",
+            "description": "The results are returned in pages. Use the offset and limit parameters to control the page start and size. Default offset is 0, and limit is 20.\r\nUse the other query parameters to optionally filter the results list.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "locationId",
+                    "description": "The id of the business location. Defaults to first business location.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "offset",
+                    "description": "Starting row of page, default 0",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "Page limit, default 20. Maximum 100.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "655a849f76496a544132afecb631fa33",
+            "name": "Returns a serviceGroup object.",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/servicegroups\/{id}",
+            "description": "The result returned is a single serviceGroup object. An id is required to find the serviceGroup. Find serviceGroup id's using \r\nthe GET consumer\/v1\/servicegroups end point,",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "id",
+                    "description": "The id of the appointment object.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "1e031db89bc2de605a2b68fc7d80c53e",
+            "name": "Returns a list of services.",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/services",
+            "description": "The results are returned in pages. Use the offset and limit parameters to control the page start and size. Default offset is 0, and limit is 20.\r\nUse the other query parameters to optionally filter the results list.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "locationId",
+                    "description": "The id of the business location. Defaults to first business location.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "serviceGroupId",
+                    "description": "Filter services by group.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "defaultService",
+                    "description": "Filter services by default service.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "offset",
+                    "description": "Starting row of page, default 0",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "Page limit, default 20. Maximum 100.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "9301d2f7465076deb9bd57ea2d4a7af3",
+            "name": "Returns a service object.",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/services\/{id}",
+            "description": "The result returned is a single service object. An id is required to find the service. Find service id's using either the GET consumer\/v1\/service end point,\r\nor the GET consumer\/v1\/appointments end point.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "id",
+                    "description": "The id of the appointment object.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "2ac751ecbd839b802ef6b8667820ef81",
+            "name": "Returns a list of resources.",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/services\/{id}\/resources",
+            "description": "The results are returned in pages. Use the offset and limit parameters to control the page start and size. Default offset is 0, and limit is 20.\r\nUse the other query parameters to optionally filter the results list.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "id",
+                    "description": "The id of the appointment object.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "offset",
+                    "description": "Starting row of page, default 0",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "Page limit, default 20. Maximum 100.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        },
+        {
+            "id": "219eeeb15d06e77b32dd957210d71f67",
+            "name": "Returns a list of customers.",
+            "url": "httpsapi.onsched.com\/\/consumer\/v1\/settings",
+            "description": "The results are returned in pages. Use the offset and limit parameters to control the page start and size. Default offset is 0, and limit is 20.\r\nUse the other query parameters to optionally filter the results list.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "locationId",
+                    "description": "The id of the business location. Defaults to first business location.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "rawModeData": ""
+        }
+    ]
+}
