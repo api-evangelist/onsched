@@ -1,0 +1,3180 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "",
+        "title": "OnSched API",
+        "description": "Build secure and scalable custom apps for Online Booking. Our flexible API provides many options for availability and booking. Take the API for a test drive. Just click on the Authorize button above and authenticate.  You can access our demo company profile if you are not a customer, or your own profile by using your assigned ClientId and Secret.\n                    ",
+        "termsOfService": "None"
+    },
+    "servers": [
+        "httpsapi.onsched.com\/"
+    ],
+    "paths": {
+        "\/consumer\/v1\/appointments": {
+            "get": {
+                "summary": "Returns a list of appointments.",
+                "description": "The results are returned in pages. Use the offset and limit parameters to control the page start and size. Default offset is 0, and limit is 20.\r\nUse the other query parameters to optionally filter the results list.",
+                "operationId": "ConsumerV1AppointmentsGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "locationId",
+                        "in": "query",
+                        "description": "The id of the business location. Defaults to first business location."
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Filter appointments by email address."
+                    },
+                    {
+                        "name": "serviceId",
+                        "in": "query",
+                        "description": "Filter appointments by service."
+                    },
+                    {
+                        "name": "resourceId",
+                        "in": "query",
+                        "description": "Filter appointments by resource."
+                    },
+                    {
+                        "name": "customerId",
+                        "in": "query",
+                        "description": "Filter appointments by customer."
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Filter appointments by status: IN, BK, CN, RE, RS."
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "Starting row of page, default 0"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Page limit, default 20. Maximum 100."
+                    }
+                ]
+            },
+            "post": {
+                "summary": "Returns an appointment object",
+                "description": "This end point creates a new appointment in an Initial \"IN\" status. \r\n\r\nA valid serviceId is required. Use GET consumer\/v1\/services to retrieve a list of your services.\r\n\r\nA valid resourceId is required if your calendar is a resource based calendar. Use consumer\/v1\/resources to retrieve a list of your resources.\r\n\r\nStartDateTime and EndDateTime are required. Use the ISO 8601 format for DateTime Timezone. e.g. 2016-10-30T9:00:00-5:00",
+                "operationId": "ConsumerV1AppointmentsPost",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "appointmentIM",
+                        "in": "body",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/consumer\/v1\/appointments\/{id}": {
+            "get": {
+                "summary": "Returns an appointment object.",
+                "description": "The result returned is a single appointment object. A valid id is required to find the appointment. \r\n\r\nFind appointment id's using the GET consumer\/v1\/appointments end point.",
+                "operationId": "ConsumerV1AppointmentsByIdGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the appointment object."
+                    }
+                ]
+            },
+            "delete": {
+                "summary": "Returns an appointment object",
+                "description": "This end point deletes a booking. Only appointments in a \"IN\" initial status can be deleted.\r\nPast dated appointments cannot be cancelled.\r\n\r\nA valid appointment id is required. Use the appointmentId returned from GET \/consumer\/v1\/appointments",
+                "operationId": "ConsumerV1AppointmentsByIdDelete",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the appointment object."
+                    }
+                ]
+            }
+        },
+        "\/consumer\/v1\/appointments\/{id}\/book": {
+            "put": {
+                "summary": "Returns an appointment object",
+                "description": "This end point completes a new booking. Only appointments in the \"IN\" initial status can be booked.\r\nby saving all the relevant details of the booking.\r\n\r\nA valid appointment id is required. Use the appointmentId returned from POST \/consumer\/v1\/appointments\r\n\r\nTo update appointment custom field values, use the GET \/consumer\/v1\/appointments\/customfields information\r\nto understand your definitions of custom fields and what key and values to update.",
+                "operationId": "ConsumerV1AppointmentsByIdBookPut",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the appointment object."
+                    },
+                    {
+                        "name": "appointmentBookModel",
+                        "in": "body",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/consumer\/v1\/appointments\/{id}\/cancel": {
+            "put": {
+                "summary": "Returns an appointment object",
+                "description": "This end point cancels a booking or reservation. Only appointments in a \"BK\" booked, or \"RS\" reserved status can be cancelled.\r\nPast dated appointments cannot be cancelled.\r\n\r\nA valid appointment id is required. Use the appointmentId returned from POST \/consumer\/v1\/appointments",
+                "operationId": "ConsumerV1AppointmentsByIdCancelPut",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the appointment object."
+                    }
+                ]
+            }
+        },
+        "\/consumer\/v1\/appointments\/{id}\/reschedule": {
+            "put": {
+                "summary": "Returns an appointment object",
+                "description": "This end point reschedules a booking. Only appointments in a \"BK\" booked status can be rescheduled.\r\nPast dated appointments cannot be cancelled.\r\n\r\nA valid appointment id is required. Use the appointmentId returned from GET \/consumer\/v1\/appointments.\r\n\r\nThe serviceId and resourceId are optional. If you want your users to change the resource or service on a reschedule\r\nyou will have to use the regular availability endpoint rather than the reschedule availability end point.\r\n\r\nUse the GET \/consum",
+                "operationId": "ConsumerV1AppointmentsByIdReschedulePut",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the appointment object."
+                    },
+                    {
+                        "name": "appointmentRM",
+                        "in": "body",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/consumer\/v1\/appointments\/customfields": {
+            "get": {
+                "summary": "Returns a list of appointment custom field definitions",
+                "description": "This end point returns your Appointment custom field definitions.\r\n\r\nAppointment custom fields are different than Customer custom fields. Appointment custom fields are\r\nstored with each appointment. They are used when the information collected during the booking is specific\r\nto a particular visit.\r\n\r\nUse the field, and type to determine how to update field values\r\nin PUT \/consumer\/v1\/appointments\/{id}\/book",
+                "operationId": "ConsumerV1AppointmentsCustomfieldsGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "locationId",
+                        "in": "query",
+                        "description": "The id of the business location. Defaults to first business location."
+                    }
+                ]
+            }
+        },
+        "\/consumer\/v1\/appointments\/bookingfields": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "ConsumerV1AppointmentsBookingfieldsGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "locationId",
+                        "in": "query",
+                        "description": "The id of the business location. Defaults to first business location."
+                    }
+                ]
+            }
+        },
+        "\/consumer\/v1\/availability\/{serviceId}\/{startDate}\/{endDate}": {
+            "get": {
+                "summary": "Returns a list of available times.",
+                "description": "Choose your search criteria carefully. Availability is an expensive call. If you search availability for all resources\r\nthen you should only do so for a single date. If you decide to search availability for multiple dates you should only do so\r\nfor a specific resource by specifying the optional resourceId parameter.\r\n\r\nStart and End times are specified as military times e.g. 800 = 8:00am, 2230 = 10:30pm. \r\nYou will only see availability within the boundary of your business start and end times.\r\n",
+                "operationId": "ConsumerV1AvailabilityByServiceIdByStartDateByEndDateGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "in": "path",
+                        "description": "Service Id for availability search."
+                    },
+                    {
+                        "name": "startDate",
+                        "in": "path",
+                        "description": "Start Date for availability search."
+                    },
+                    {
+                        "name": "endDate",
+                        "in": "path",
+                        "description": "End Date for availability search."
+                    },
+                    {
+                        "name": "startTime",
+                        "in": "query",
+                        "description": "Start Time for availability search. Defaults to Business Hours Start."
+                    },
+                    {
+                        "name": "endTime",
+                        "in": "query",
+                        "description": "End Time for availability search. Defaults to Business Hours End."
+                    },
+                    {
+                        "name": "locationId",
+                        "in": "query",
+                        "description": "The id of the business location. Defaults to first business location."
+                    },
+                    {
+                        "name": "resourceId",
+                        "in": "query",
+                        "description": "Filter appointments by resource."
+                    },
+                    {
+                        "name": "resourceGroupId",
+                        "in": "query",
+                        "description": "Resource Group Id for availability search."
+                    },
+                    {
+                        "name": "resourceIds",
+                        "in": "query",
+                        "description": "Comma separated Resource Id's for availability search."
+                    },
+                    {
+                        "name": "duration",
+                        "in": "query",
+                        "description": "Duration of the service if different than the default."
+                    },
+                    {
+                        "name": "tzOffset",
+                        "in": "query",
+                        "description": "Request timezone offset to view availability."
+                    },
+                    {
+                        "name": "dayAvailability",
+                        "in": "query",
+                        "description": "Return day availability for number of days specified."
+                    },
+                    {
+                        "name": "firstDayAvailable",
+                        "in": "query",
+                        "description": "Return available times for the first available day."
+                    }
+                ]
+            }
+        },
+        "\/consumer\/v1\/availability\/{serviceId}\/{startDate}\/{endDate}\/days": {
+            "get": {
+                "summary": "Returns a list of available days.",
+                "description": "This end point is used to show day level availability. For example if the business is closed, or there is a public holiday.\r\n\r\nDay level availability is a good way to restrict your choices of dates in your app and improve usability.",
+                "operationId": "ConsumerV1AvailabilityByServiceIdByStartDateByEndDateDaysGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "in": "path",
+                        "description": "Service Id for availability search."
+                    },
+                    {
+                        "name": "startDate",
+                        "in": "path",
+                        "description": "Start Date for availability search."
+                    },
+                    {
+                        "name": "endDate",
+                        "in": "path",
+                        "description": "End Date for availability search."
+                    },
+                    {
+                        "name": "locationId",
+                        "in": "query",
+                        "description": "The id of the business location. Defaults to first business location."
+                    },
+                    {
+                        "name": "resourceId",
+                        "in": "query",
+                        "description": "Filter appointments by resource."
+                    },
+                    {
+                        "name": "tzOffset",
+                        "in": "query",
+                        "description": "Request timezone offset to view availability."
+                    }
+                ]
+            }
+        },
+        "\/consumer\/v1\/availability\/{serviceId}\/{startDate}\/{endDate}\/unavailable": {
+            "get": {
+                "summary": "Returns a list of unavailable times.",
+                "description": "This endpoint is used to show unavailable times and provides information why the timeslot is unavailable.",
+                "operationId": "ConsumerV1AvailabilityByServiceIdByStartDateByEndDateUnavailableGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "serviceId",
+                        "in": "path",
+                        "description": "Service Id for availability search."
+                    },
+                    {
+                        "name": "startDate",
+                        "in": "path",
+                        "description": "Start Date for availability search."
+                    },
+                    {
+                        "name": "endDate",
+                        "in": "path",
+                        "description": "End Date for availability search."
+                    },
+                    {
+                        "name": "locationId",
+                        "in": "query",
+                        "description": "The id of the business location. Defaults to first business location."
+                    },
+                    {
+                        "name": "resourceId",
+                        "in": "query",
+                        "description": "Filter appointments by resource."
+                    },
+                    {
+                        "name": "duration",
+                        "in": "query",
+                        "description": "Duration of the service if different than the default."
+                    },
+                    {
+                        "name": "tzOffset",
+                        "in": "query",
+                        "description": "Request timezone offset to view availability."
+                    }
+                ]
+            }
+        },
+        "\/consumer\/v1\/availability\/{appointmentId}\/reschedule": {
+            "get": {
+                "summary": "Returns a list of available times.",
+                "description": "This end point is used to find availability for the purpose of rescheduling an appointment.\r\nAvailability defaults to the serviceId, resourceId and timezone from the original appointment.\r\nAfter choosing from the availability, you can call the appointment reschedule endpoint.",
+                "operationId": "ConsumerV1AvailabilityByAppointmentIdRescheduleGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "appointmentId",
+                        "in": "path",
+                        "description": "Appointment Id of the original appointment being rescheduled."
+                    },
+                    {
+                        "name": "tzOffset",
+                        "in": "query",
+                        "description": "Request timezone offset to view availability."
+                    }
+                ]
+            }
+        },
+        "\/consumer\/v1\/customers": {
+            "get": {
+                "summary": "Returns a list of customers.",
+                "description": "The results are returned in pages. Use the offset and limit parameters to control the page start and size. Default offset is 0, and limit is 20.\r\nUse the other query parameters to optionally filter the results list.",
+                "operationId": "ConsumerV1CustomersGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "locationId",
+                        "in": "query",
+                        "description": "The id of the business location. Defaults to first business location."
+                    },
+                    {
+                        "name": "groupId",
+                        "in": "query",
+                        "description": "Filter customers by group."
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Filter appointments by email address."
+                    },
+                    {
+                        "name": "lastname",
+                        "in": "query",
+                        "description": "Search customers by lastname."
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "Filter customers by deleted status."
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "Starting row of page, default 0"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Page limit, default 20. Maximum 100."
+                    }
+                ]
+            },
+            "post": {
+                "summary": "Creates a new customer object.",
+                "description": "Use this endpoint to create a new customer. If not specified the business location id defaults to the first location in the company.\r\nEmail Address and a lastname are required for creating a new customer.",
+                "operationId": "ConsumerV1CustomersPost",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "customerIM",
+                        "in": "body",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/consumer\/v1\/customers\/{id}": {
+            "get": {
+                "summary": "Returns a customer object.",
+                "description": "The result returned is a single customer object. An id is required to find the customer. Find customer id's using either the GET consumer\/v1\/customers end point,\r\nor the GET consumer\/v1\/appointments end point. A customer object is automatically created with the first booking if it doesn't already exist.",
+                "operationId": "ConsumerV1CustomersByIdGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the appointment object."
+                    }
+                ]
+            },
+            "put": {
+                "summary": "Updates a customer object.",
+                "description": "Use this endpoint to update customer information. If not specified the business location id defaults to the first location in the company.\r\nBlank fields are not changed",
+                "operationId": "ConsumerV1CustomersByIdPut",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the appointment object."
+                    },
+                    {
+                        "name": "customerUM",
+                        "in": "body",
+                        "description": ""
+                    }
+                ]
+            },
+            "delete": {
+                "summary": "Deletes a customer subscription object.",
+                "description": "Deletes a customer subscription object.",
+                "operationId": "ConsumerV1CustomersByIdDelete",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the appointment object."
+                    }
+                ]
+            }
+        },
+        "\/consumer\/v1\/customers\/customfields": {
+            "get": {
+                "summary": "Returns a list of customField objects",
+                "description": "This end point returns your Customer custom field definitions.\r\n\r\nCustomer custom fields are different than Appointment custom fields. Appointment custom fields are\r\nstored with each appointment. They are used when the information collected during the booking is specific\r\nto a particular visit, where as Customer custom fields are stored with the customer profile. \r\n\r\nUse the key field, and type to determine how to update field values\r\nin POST \/consumer\/v1\/customers and PUT \/consumer\/v1\/customers",
+                "operationId": "ConsumerV1CustomersCustomfieldsGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "locationId",
+                        "in": "query",
+                        "description": "The id of the business location. Defaults to first business location."
+                    },
+                    {
+                        "name": "leadQuestions",
+                        "in": "query",
+                        "description": "A true\/false indicator to filter on custom fields used for lead questions."
+                    }
+                ]
+            }
+        },
+        "\/consumer\/v1\/customers\/registrationfields": {
+            "get": {
+                "summary": "Returns a list of lead questions",
+                "description": "This end point returns your Customer Registration fields.\r\n\r\nCustomer custom fields are different than Appointment custom fields. Appointment custom fields are\r\nstored with each appointment. They are used when the information collected during the booking is specific\r\nto a particular visit, where as Customer custom fields are stored with the customer profile.",
+                "operationId": "ConsumerV1CustomersRegistrationfieldsGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "locationId",
+                        "in": "query",
+                        "description": "The id of the business location. Defaults to first business location."
+                    }
+                ]
+            }
+        },
+        "\/consumer\/v1\/customers\/plans": {
+            "get": {
+                "summary": "Returns a list of customers.",
+                "description": "The results are returned in pages. Use the offset and limit parameters to control the page start and size. Default offset is 0, and limit is 20.\r\nUse the other query parameters to optionally filter the results list.",
+                "operationId": "ConsumerV1CustomersPlansGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "locationId",
+                        "in": "query",
+                        "description": "The id of the business location. Defaults to first business location."
+                    },
+                    {
+                        "name": "groupId",
+                        "in": "query",
+                        "description": "Filter customers by group."
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "Starting row of page, default 0"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Page limit, default 20. Maximum 100."
+                    }
+                ]
+            }
+        },
+        "\/consumer\/v1\/customers\/plans\/{id}": {
+            "get": {
+                "summary": "Returns a customer object.",
+                "description": "The result returned is a single customer object. An id is required to find the customer. Find customer id's using either the GET consumer\/v1\/customers end point,\r\nor the GET consumer\/v1\/appointments end point. A customer object is automatically created with the first booking if it doesn't already exist.",
+                "operationId": "ConsumerV1CustomersPlansByIdGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the appointment object."
+                    }
+                ]
+            }
+        },
+        "\/consumer\/v1\/customers\/{id}\/planlimits\/{serviceId}\/{resourceId}\/{dateTimeTz}": {
+            "get": {
+                "summary": "Returns a list of customer booking limits.",
+                "description": "The result returned is list of limit rules as defined by the subscribed customer plan along with Booking Counts\/Minutes\r\nThe results indicate the remaining bookings count \/ minutes. Use the results in your app to determine if the customer should continue booking.\r\nYou can enforce Limits in periods: Daily,Weekly,Monthly and for maximum total limits. Maximum total limits is based on six months prior to\r\nthe DateTimeTz and six months after the DateTimeTz. Daily, Weekly and Monthly limits are based ",
+                "operationId": "ConsumerV1CustomersByIdPlanlimitsByServiceIdByResourceIdByDateTimeTzGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the appointment object."
+                    },
+                    {
+                        "name": "serviceId",
+                        "in": "path",
+                        "description": "Service Id for availability search."
+                    },
+                    {
+                        "name": "resourceId",
+                        "in": "path",
+                        "description": "The id of the resource object."
+                    },
+                    {
+                        "name": "dateTimeTz",
+                        "in": "path",
+                        "description": "The DateTimeTz to check"
+                    }
+                ]
+            }
+        },
+        "\/consumer\/v1\/customers\/subscriptions": {
+            "get": {
+                "summary": "Returns a list of customer subscriptions.",
+                "description": "The results are returned in pages. Use the offset and limit parameters to control the page start and size. Default offset is 0, and limit is 20.\r\nUse the other query parameters to optionally filter the results list.",
+                "operationId": "ConsumerV1CustomersSubscriptionsGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "locationId",
+                        "in": "query",
+                        "description": "The id of the business location. Defaults to first business location."
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "Starting row of page, default 0"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Page limit, default 20. Maximum 100."
+                    }
+                ]
+            }
+        },
+        "\/consumer\/v1\/customers\/{id}\/subscriptions": {
+            "get": {
+                "summary": "Returns a customer subscription object.",
+                "description": "The result returned is a single customer subscription object. A customer can only be subsribed to a single Customer Plan",
+                "operationId": "ConsumerV1CustomersByIdSubscriptionsGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the appointment object."
+                    }
+                ]
+            },
+            "post": {
+                "summary": "Creates a new customer subscription object.",
+                "description": "Use this endpoint to create a new customer subscription.",
+                "operationId": "ConsumerV1CustomersByIdSubscriptionsPost",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the appointment object."
+                    },
+                    {
+                        "name": "customerSubscriptionIM",
+                        "in": "body",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/consumer\/v1\/customers\/subscriptions\/{id}": {
+            "get": {
+                "summary": "Returns a customer subscription object.",
+                "description": "The result returned is a single customer subscription object.",
+                "operationId": "ConsumerV1CustomersSubscriptionsByIdGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the appointment object."
+                    }
+                ]
+            },
+            "put": {
+                "summary": "Updates a customer subscription object.",
+                "description": "Use this endpoint to update customer subscription information.",
+                "operationId": "ConsumerV1CustomersSubscriptionsByIdPut",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the appointment object."
+                    },
+                    {
+                        "name": "customerSubscriptionUM",
+                        "in": "body",
+                        "description": ""
+                    }
+                ]
+            },
+            "delete": {
+                "summary": "Deletes a list of lead questions",
+                "description": "Deletes a list of lead questions",
+                "operationId": "ConsumerV1CustomersSubscriptionsByIdDelete",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the appointment object."
+                    }
+                ]
+            }
+        },
+        "\/consumer\/v1\/customers\/countries": {
+            "get": {
+                "summary": "Returns a list of country objects",
+                "description": "Returns a list of countries with the associated country code. Country codes are based on the 2 character ANSI standard.",
+                "operationId": "ConsumerV1CustomersCountriesGet",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/consumer\/v1\/customers\/states": {
+            "get": {
+                "summary": "Returns a list of state objects",
+                "description": "Returns a list of states with the associated state code and country. \r\n\r\nContact us if states for your countries of operation are not currently loaded.",
+                "operationId": "ConsumerV1CustomersStatesGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "country",
+                        "in": "query",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/consumer\/v1\/locations": {
+            "get": {
+                "summary": "Returns a list of business locations.",
+                "description": "Use this api end point if you have multiple business locations in your company.\r\nThe results are returned in pages. Use the offset and limit parameters to control the page start and size. Default offset is 0, and limit is 20.\r\nUse the other query parameters to optionally filter the results list.",
+                "operationId": "ConsumerV1LocationsGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Location name(full or partial) to filter on"
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "Starting row of page, default 0"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Page limit, default 20. Maximum 100."
+                    }
+                ]
+            }
+        },
+        "\/consumer\/v1\/locations\/{id}": {
+            "get": {
+                "summary": "Returns a business location object.",
+                "description": "The result returned is a single location object. An id is required to find the location. Find location id's using the GET consumer\/v1\/locations end point,",
+                "operationId": "ConsumerV1LocationsByIdGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the appointment object."
+                    }
+                ]
+            }
+        },
+        "\/consumer\/v1\/resources": {
+            "get": {
+                "summary": "Returns a list of resources.",
+                "description": "The results are returned in pages. Use the offset and limit parameters to control the page start and size. Default offset is 0, and limit is 20.\r\nUse the other query parameters to optionally filter the results list.",
+                "operationId": "ConsumerV1ResourcesGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "locationId",
+                        "in": "query",
+                        "description": "The id of the business location. Defaults to first business location."
+                    },
+                    {
+                        "name": "resourceGroupId",
+                        "in": "query",
+                        "description": "Resource Group Id for availability search."
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Filter appointments by email address."
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Location name(full or partial) to filter on"
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "Specify sort order of response."
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "Starting row of page, default 0"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Page limit, default 20. Maximum 100."
+                    }
+                ]
+            }
+        },
+        "\/consumer\/v1\/resources\/{id}": {
+            "get": {
+                "summary": "Returns a resource object.",
+                "description": "The result returned is a single resource object. An id is required to find the resource. Find customer id's using either the GET consumer\/v1\/resources end point,\r\nor the GET consumer\/v1\/appointments end point.",
+                "operationId": "ConsumerV1ResourcesByIdGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the appointment object."
+                    }
+                ]
+            }
+        },
+        "\/consumer\/v1\/resources\/{id}\/services": {
+            "get": {
+                "summary": "Returns a list of resource services.",
+                "description": "The results are returned in pages. Use the offset and limit parameters to control the page start and size. Default offset is 0, and limit is 20.\r\nUse the other query parameters to optionally filter the results list.\r\nResource services are used to explicitly define the services that can be booked for a resource. If no resource services are defined then by\r\ndefault all services can be booked for the resource.",
+                "operationId": "ConsumerV1ResourcesByIdServicesGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the appointment object."
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "Starting row of page, default 0"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Page limit, default 20. Maximum 100."
+                    }
+                ]
+            }
+        },
+        "\/consumer\/v1\/servicegroups": {
+            "get": {
+                "summary": "Returns a list of service groups.",
+                "description": "The results are returned in pages. Use the offset and limit parameters to control the page start and size. Default offset is 0, and limit is 20.\r\nUse the other query parameters to optionally filter the results list.",
+                "operationId": "ConsumerV1ServiceGroupsGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "locationId",
+                        "in": "query",
+                        "description": "The id of the business location. Defaults to first business location."
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "Starting row of page, default 0"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Page limit, default 20. Maximum 100."
+                    }
+                ]
+            }
+        },
+        "\/consumer\/v1\/servicegroups\/{id}": {
+            "get": {
+                "summary": "Returns a serviceGroup object.",
+                "description": "The result returned is a single serviceGroup object. An id is required to find the serviceGroup. Find serviceGroup id's using \r\nthe GET consumer\/v1\/servicegroups end point,",
+                "operationId": "ConsumerV1ServiceGroupsByIdGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the appointment object."
+                    }
+                ]
+            }
+        },
+        "\/consumer\/v1\/services": {
+            "get": {
+                "summary": "Returns a list of services.",
+                "description": "The results are returned in pages. Use the offset and limit parameters to control the page start and size. Default offset is 0, and limit is 20.\r\nUse the other query parameters to optionally filter the results list.",
+                "operationId": "ConsumerV1ServicesGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "locationId",
+                        "in": "query",
+                        "description": "The id of the business location. Defaults to first business location."
+                    },
+                    {
+                        "name": "serviceGroupId",
+                        "in": "query",
+                        "description": "Filter services by group."
+                    },
+                    {
+                        "name": "defaultService",
+                        "in": "query",
+                        "description": "Filter services by default service."
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "Starting row of page, default 0"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Page limit, default 20. Maximum 100."
+                    }
+                ]
+            }
+        },
+        "\/consumer\/v1\/services\/{id}": {
+            "get": {
+                "summary": "Returns a service object.",
+                "description": "The result returned is a single service object. An id is required to find the service. Find service id's using either the GET consumer\/v1\/service end point,\r\nor the GET consumer\/v1\/appointments end point.",
+                "operationId": "ConsumerV1ServicesByIdGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the appointment object."
+                    }
+                ]
+            }
+        },
+        "\/consumer\/v1\/services\/{id}\/resources": {
+            "get": {
+                "summary": "Returns a list of resources.",
+                "description": "The results are returned in pages. Use the offset and limit parameters to control the page start and size. Default offset is 0, and limit is 20.\r\nUse the other query parameters to optionally filter the results list.",
+                "operationId": "ConsumerV1ServicesByIdResourcesGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the appointment object."
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "Starting row of page, default 0"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Page limit, default 20. Maximum 100."
+                    }
+                ]
+            }
+        },
+        "\/consumer\/v1\/settings": {
+            "get": {
+                "summary": "Returns a list of customers.",
+                "description": "The results are returned in pages. Use the offset and limit parameters to control the page start and size. Default offset is 0, and limit is 20.\r\nUse the other query parameters to optionally filter the results list.",
+                "operationId": "ConsumerV1SettingsGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "locationId",
+                        "in": "query",
+                        "description": "The id of the business location. Defaults to first business location."
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "AppointmentListViewModel": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "url": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "hasMore": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "count": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "total": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "data": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "AppointmentViewModel": {
+                "type": "object",
+                "properties": {
+                    "onlineBooking": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "object": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "locationId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "calendarId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "serviceId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "resourceId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "customerId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "rescheduledId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "createDate": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "startDateTime": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "endDateTime": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "date": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "time": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "duration": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "timezone": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "status": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "confirmationNumber": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "bookedBy": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "confirmed": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "email": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "lastname": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "firstname": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "phone": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "phoneType": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "phoneExt": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "customerMessage": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "lastModifiedOn": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "lastModifiedBy": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "latitude": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "longitude": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "stripeChargeId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "stripeRefundId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "paymentStatus": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "customFields": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "CustomFieldViewModel": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "value": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "AppointmentInitialModel": {
+                "type": "object",
+                "properties": {
+                    "locationId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "serviceId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "resourceId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "customerId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "bookedBy": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "startDateTime": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "endDateTime": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "AppointmentBookModel": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "phone": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "phoneType": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "phoneExt": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "customerMessage": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "CustomFieldInputModel": {
+                "type": "object",
+                "properties": {
+                    "field1": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "field2": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "field3": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "field4": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "field5": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "field6": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "field7": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "field8": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "field9": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "field10": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "AppointmentRescheduleModel": {
+                "type": "object",
+                "properties": {
+                    "serviceId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "resourceId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "startDateTime": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "endDateTime": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "CustomFieldDefinitionListViewModel": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "total": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "customFields": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "CustomFieldDefinitionViewModel": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "fieldKey": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "fieldName": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "fieldLabel": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "fieldLength": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "fieldType": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "sortKey": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "fieldPublic": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "fieldRequired": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "leadQuestion": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "leadQuestionWeight": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "fieldListItems": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "CustomFieldListDefinitionViewModel": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "value": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "leadAnswerScore": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "leadRoutingEntityType": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "leadRoutingEntityId": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "AppointmentBookingFieldListViewModel": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "total": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "bookingFields": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "AppointmentBookingFieldViewModel": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "companyId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "businessId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "fieldName": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "fieldLabel": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "fieldRequired": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "AvailabilityViewModel": {
+                "type": "object",
+                "properties": {
+                    "url": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "object": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "businessName": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "serviceId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "serviceName": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "serviceDescription": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "serviceDuration": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "resourceId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "resourceName": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "resourceDescription": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "tzRequested": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "firstAvailableDate": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "availableDays": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "availableTimes": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "AvailableDayViewModel": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "date": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "closed": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "available": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "reasonCode": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "reason": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "AvailableTimeViewModel": {
+                "type": "object",
+                "properties": {
+                    "startDateTime": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "endDateTime": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "date": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "time": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "displayTime": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "duration": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "allowableBookings": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "availableBookings": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "resourceId": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "AvailabilityDayViewModel": {
+                "type": "object",
+                "properties": {
+                    "url": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "object": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "serviceId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "serviceName": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "serviceDescription": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "resourceId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "resourceName": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "resourceDescription": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "tzRequested": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "availableDays": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "UnavailableTimeListViewModel": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "url": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "unavailableTimes": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "UnavailableTimeViewModel": {
+                "type": "object",
+                "properties": {
+                    "objectName": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "scheduleId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "resourceId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "serviceId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "date": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "fromTime": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "toTime": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "tzOffset": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "startDateTime": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "endDateTime": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "reasonCode": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "reason": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "entityType": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "entityId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "resourceName": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "serviceName": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "CustomerListViewModel": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "url": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "hasMore": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "count": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "total": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "data": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "CustomerViewModel": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "locationId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "email": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "lastname": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "firstname": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "gender": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "birthdate": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "lastVisitDate": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "groupId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "resourceId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "createdOn": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "createdBy": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "registeredBy": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "verifiedBy": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "modifiedBy": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "modifiedOn": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "verificationDate": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "registrationDate": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "emailInfo": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "emailPromotion": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "disabled": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "inviteEmailSent": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "welcomeEmailSent": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "deletedStatus": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "deletedTime": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "notificationType": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "subscriptionId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "latitude": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "longitude": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "stripeCustomerId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "customFields": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "ContactViewModel": {
+                "type": "object",
+                "properties": {
+                    "phoneType": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "homePhone": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "mobilePhone": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "businessPhone": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "businessPhoneExt": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "skypeUsername": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "AddressViewModel": {
+                "type": "object",
+                "properties": {
+                    "addressLine1": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "addressLine2": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "city": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "state": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "country": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "postalCode": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "CustomerInputModel": {
+                "type": "object",
+                "properties": {
+                    "locationId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "email": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "lastname": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "firstname": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "type": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "stripeCustomerId": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "AddressInputModel": {
+                "type": "object",
+                "properties": {
+                    "addressLine1": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "addressLine2": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "city": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "state": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "country": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "postalCode": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "ContactInputModel": {
+                "type": "object",
+                "properties": {
+                    "preferredPhoneType": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "homePhone": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "mobilePhone": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "businessPhone": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "businessPhoneExt": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "skypeUsername": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "CustomerUpdateModel": {
+                "type": "object",
+                "properties": {
+                    "locationId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "type": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "email": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "lastname": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "firstname": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "stripeCustomerId": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "AddressUpdateModel": {
+                "type": "object",
+                "properties": {
+                    "addressLine1": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "addressLine2": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "city": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "state": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "country": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "postalCode": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "ContactUpdateModel": {
+                "type": "object",
+                "properties": {
+                    "preferredPhoneType": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "homePhone": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "mobilePhone": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "businessPhone": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "businessPhoneExt": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "skypeUsername": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "CustomFieldUpdateModel": {
+                "type": "object",
+                "properties": {
+                    "field1": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "field2": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "field3": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "field4": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "field5": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "field6": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "field7": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "field8": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "field9": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "field10": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "CustomerRegistrationFieldListViewModel": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "total": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "registrationFields": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "CustomerRegistrationFieldViewModel": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "companyId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "businessId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "fieldName": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "fieldLabel": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "fieldRequired": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "CustomerPlanListViewModel": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "url": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "hasMore": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "count": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "total": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "data": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "CustomerPlanViewModel": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "locationId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "uid": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "serviceGroupId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "created": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "description": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "stripePlanId": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "PlanLimitListViewModel": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "url": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "hasMore": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "count": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "total": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "data": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "PlanLimitViewModel": {
+                "type": "object",
+                "properties": {
+                    "planName": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "planStart": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "trialEnd": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "type": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "interval": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "resourceLimits": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "trialPeriodLimits": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "limitCount": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "limitMinutes": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "periodStart": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "periodEnd": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "adjPeriodStart": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "adjPeriodEnd": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "bookingCount": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "bookingMinutes": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "remainingBookings": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "remainingMinutes": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "CustomerSubscriptionListViewModel": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "url": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "hasMore": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "count": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "total": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "data": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "CustomerSubscriptionViewModel": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "customerId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "customerPlanId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "customerPlanName": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "planStart": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "trialPeriodStart": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "trialPeriodEnd": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "CustomerSubscriptionInputModel": {
+                "type": "object",
+                "properties": {
+                    "customerPlanId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "planStart": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "trialPeriodEnd": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "CustomerSubscriptionUpdateModel": {
+                "type": "object",
+                "properties": {
+                    "customerPlanId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "planStart": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "trialPeriodEnd": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "CountryViewModel": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "code": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "StateViewModel": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "code": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "country": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "LocationListViewModel": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "url": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "hasMore": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "count": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "total": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "data": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "LocationViewModel": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "companyId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "phone": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "fax": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "email": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "website": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "logo": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "businessHolidays": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "BusinessHoursViewModel": {
+                "type": "object"
+            },
+            "BusinessHolidayViewModel": {
+                "type": "object",
+                "properties": {
+                    "holidayName": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "businessClosed": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "OnlineSettingsViewModel": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "companyId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "enabled": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "familyMembersEnabled": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "customerVerification": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "serviceLabel": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "resourceSelection": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "resourceLabel": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "resourceAnyLabel": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "businessId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "defaultService": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "liveMode": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "firstAvailable": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "formFlow": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "availabilityForm": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "showServiceGroups": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "bookWithAccount": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "bookingPolicy": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "bookingMessage": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "showOnSchedLogo": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "showBusinessLogo": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "enableWorldTimezones": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "disableAuthorization": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "hideNavBar": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "hideLocationNav": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "hideServiceGroupsNav": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "hideServicesNav": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "hideContinueBooking": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "bookingTimerMins": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "defaultToCustomerTimezone": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "returnToService": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "returnToAvailability": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "hideBreadCrumbNav": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "lateCancelHours": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "lateCancelAction": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "lateRescheduleHours": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "lateRescheduleAction": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "bookingConfirmationMessage": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "BusinessHourViewModel": {
+                "type": "object",
+                "properties": {
+                    "isOpen": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "startTime": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "endTime": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "is24Hours": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "ResourceListViewModel": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "url": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "hasMore": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "count": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "total": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "data": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "ResourceViewModel": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "locationId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "email": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "groupId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "description": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "imageUrl": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "deletedStatus": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "deletedTime": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "notificationType": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "bookingNotification": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "googleCalendarId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "outlookCalendarId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "ignoreBusinessHours": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "gender": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "hourly": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "calendarAvailability": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "sortKey": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "skypeName": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "bioLink": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "timezoneOffset": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "timezoneId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "effectiveDate": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "ResourceServiceListViewModel": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "url": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "hasMore": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "count": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "total": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "data": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "ResourceServiceViewModel": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "resourceId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "resourceName": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "serviceId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "serviceName": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "ServiceGroupListViewModel": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "url": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "hasMore": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "count": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "total": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "data": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "ServiceGroupViewModel": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "imageUrl": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "companyId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "description": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "label": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "ServiceListViewModel": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "url": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "hasMore": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "count": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "total": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "data": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "ServiceViewModel": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "companyId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "locationId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "description": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "imageUrl": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "serviceGroupId": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "serviceGroupName": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "showOnline": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "defaultService": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "duration": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "durationSelect": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "durationMin": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "durationMax": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "durationInterval": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "padding": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "consumerPadding": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "feeAmount": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "feeTaxable": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "cancellationFeeAmount": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "cancellationFeeTaxable": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "nonRefundable": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "dailyBookingLimitCount": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "dailyBookingLimitMinutes": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "maxBookingLimit": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "maxResourceBookingLimit": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            }
+        }
+    }
+}
