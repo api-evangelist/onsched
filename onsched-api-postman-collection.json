@@ -1,5 +1,5 @@
 {
-    "id": "dea6e8e0c40e38bfdb50d0ede821f299",
+    "id": "5c67f20e65a45c165cb241c3ae41fb09",
     "name": "OnSched API",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "efeb7f0f06f688300efe3ba6087782f2",
+            "id": "ac14faad9b838c3102690ead52c83036",
             "name": "Returns a list of appointments.",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/appointments",
             "description": "The results are returned in pages. Use the offset and limit parameters to control the page start and size. Default offset is 0, and limit is 20.\r\nUse the other query parameters to optionally filter the results list.",
@@ -86,11 +86,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "8c235d2e560c1aeba5aa940f7a70b735",
+            "id": "129021843158cf6b3821664fc8b15fde",
             "name": "Returns an appointment object",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/appointments",
             "description": "This end point creates a new appointment in an Initial \"IN\" status. \r\n\r\nA valid serviceId is required. Use GET consumer\/v1\/services to retrieve a list of your services.\r\n\r\nA valid resourceId is required if your calendar is a resource based calendar. Use consumer\/v1\/resources to retrieve a list of your resources.\r\n\r\nStartDateTime and EndDateTime are required. Use the ISO 8601 format for DateTime Timezone. e.g. 2016-10-30T9:00:00-5:00",
@@ -117,11 +117,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "3b09e904a31bee544049bd7b84a23bd6",
+            "id": "05e746c5f16afb9082ce823fecf96306",
             "name": "Returns an appointment object.",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/appointments\/{id}",
             "description": "The result returned is a single appointment object. A valid id is required to find the appointment. \r\n\r\nFind appointment id's using the GET consumer\/v1\/appointments end point.",
@@ -148,11 +148,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "5f3b87e452d55b5922d1a184dbbfd787",
+            "id": "7762757b443a46f31b07db06dd472ab2",
             "name": "Returns an appointment object",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/appointments\/{id}",
             "description": "This end point deletes a booking. Only appointments in a \"IN\" initial status can be deleted.\r\nPast dated appointments cannot be cancelled.\r\n\r\nA valid appointment id is required. Use the appointmentId returned from GET \/consumer\/v1\/appointments",
@@ -179,11 +179,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "e216316de26ac4cfed9e7614615ffaa9",
+            "id": "8602ee163611ab3174c0140079e7c80f",
             "name": "Returns an appointment object",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/appointments\/{id}\/book",
             "description": "This end point completes a new booking. Only appointments in the \"IN\" initial status can be booked.\r\nby saving all the relevant details of the booking.\r\n\r\nA valid appointment id is required. Use the appointmentId returned from POST \/consumer\/v1\/appointments\r\n\r\nTo update appointment custom field values, use the GET \/consumer\/v1\/appointments\/customfields information\r\nto understand your definitions of custom fields and what key and values to update.",
@@ -217,11 +217,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "ad323c95603be07a0804e956336f8df6",
+            "id": "078471ef7c57a6294b3a85d45f854a0d",
             "name": "Returns an appointment object",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/appointments\/{id}\/cancel",
             "description": "This end point cancels a booking or reservation. Only appointments in a \"BK\" booked, or \"RS\" reserved status can be cancelled.\r\nPast dated appointments cannot be cancelled.\r\n\r\nA valid appointment id is required. Use the appointmentId returned from POST \/consumer\/v1\/appointments",
@@ -248,11 +248,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "18b4ec52ae50171843c6f63deccaed92",
+            "id": "39b9f0f75a518c0441f4b76e3ae136ff",
             "name": "Returns an appointment object",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/appointments\/{id}\/reschedule",
             "description": "This end point reschedules a booking. Only appointments in a \"BK\" booked status can be rescheduled.\r\nPast dated appointments cannot be cancelled.\r\n\r\nA valid appointment id is required. Use the appointmentId returned from GET \/consumer\/v1\/appointments.\r\n\r\nThe serviceId and resourceId are optional. If you want your users to change the resource or service on a reschedule\r\nyou will have to use the regular availability endpoint rather than the reschedule availability end point.\r\n\r\nUse the GET \/consum",
@@ -286,11 +286,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "e72d73f6706195eb677b7823d03b7cf9",
+            "id": "5536054e1ca4db1d0d726da362fe086d",
             "name": "Returns a list of appointment custom field definitions",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/appointments\/customfields",
             "description": "This end point returns your Appointment custom field definitions.\r\n\r\nAppointment custom fields are different than Customer custom fields. Appointment custom fields are\r\nstored with each appointment. They are used when the information collected during the booking is specific\r\nto a particular visit.\r\n\r\nUse the field, and type to determine how to update field values\r\nin PUT \/consumer\/v1\/appointments\/{id}\/book",
@@ -317,11 +317,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "a7cf6542ba1e4b59bd2389cccb83b16c",
+            "id": "e157db24dd7eb48d6be5824ab9e75aeb",
             "name": "",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/appointments\/bookingfields",
             "description": "",
@@ -348,11 +348,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "0a86e0b46bd4400d0e8992a8950b7889",
+            "id": "fa3a7ec5ef551b45777c095ce6cad65c",
             "name": "Returns a list of available times.",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/availability\/{serviceId}\/{startDate}\/{endDate}",
             "description": "Choose your search criteria carefully. Availability is an expensive call. If you search availability for all resources\r\nthen you should only do so for a single date. If you decide to search availability for multiple dates you should only do so\r\nfor a specific resource by specifying the optional resourceId parameter.\r\n\r\nStart and End times are specified as military times e.g. 800 = 8:00am, 2230 = 10:30pm. \r\nYou will only see availability within the boundary of your business start and end times.\r\n",
@@ -463,11 +463,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "850da6e4fdaee635b0218e93ea4e8973",
+            "id": "521d4c92dd2b4bb047af0b3cb72506b8",
             "name": "Returns a list of available days.",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/availability\/{serviceId}\/{startDate}\/{endDate}\/days",
             "description": "This end point is used to show day level availability. For example if the business is closed, or there is a public holiday.\r\n\r\nDay level availability is a good way to restrict your choices of dates in your app and improve usability.",
@@ -529,11 +529,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "cdd7c145ff4272077933f110ebdbfbbc",
+            "id": "a6a855216ee1be5c9287ec507df8a05c",
             "name": "Returns a list of unavailable times.",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/availability\/{serviceId}\/{startDate}\/{endDate}\/unavailable",
             "description": "This endpoint is used to show unavailable times and provides information why the timeslot is unavailable.",
@@ -602,11 +602,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "bbeaa763a3920d656a5aa467a39ddb92",
+            "id": "d7596f41054801a46d2e619fcef6ecc5",
             "name": "Returns a list of available times.",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/availability\/{appointmentId}\/reschedule",
             "description": "This end point is used to find availability for the purpose of rescheduling an appointment.\r\nAvailability defaults to the serviceId, resourceId and timezone from the original appointment.\r\nAfter choosing from the availability, you can call the appointment reschedule endpoint.",
@@ -640,11 +640,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "1361f4409cdbf4849f80892fe357dd52",
+            "id": "46895bdbd09d1c9fd72be560eccfce72",
             "name": "Returns a list of customers.",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers",
             "description": "The results are returned in pages. Use the offset and limit parameters to control the page start and size. Default offset is 0, and limit is 20.\r\nUse the other query parameters to optionally filter the results list.",
@@ -713,11 +713,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "b21886254814fc9a2b97d3e5ae6c1a34",
+            "id": "78d28292fadf693d1d06ab0538e90606",
             "name": "Creates a new customer object.",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers",
             "description": "Use this endpoint to create a new customer. If not specified the business location id defaults to the first location in the company.\r\nEmail Address and a lastname are required for creating a new customer.",
@@ -744,11 +744,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "d92e5e97aa222a3805de2ead7881eea2",
+            "id": "c8ae285440dc8bee36a7a1af25329f62",
             "name": "Returns a customer object.",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers\/{id}",
             "description": "The result returned is a single customer object. An id is required to find the customer. Find customer id's using either the GET consumer\/v1\/customers end point,\r\nor the GET consumer\/v1\/appointments end point. A customer object is automatically created with the first booking if it doesn't already exist.",
@@ -775,11 +775,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "72333d5a31465ef2504981826f5488ce",
+            "id": "1b0d41ba447408e323a4e955cc13de86",
             "name": "Updates a customer object.",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers\/{id}",
             "description": "Use this endpoint to update customer information. If not specified the business location id defaults to the first location in the company.\r\nBlank fields are not changed",
@@ -813,11 +813,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "8773db35206d3ea720ac9f4e5a7fbcaf",
+            "id": "26645fe723573513eaabc58d853a0f01",
             "name": "Deletes a customer subscription object.",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers\/{id}",
             "description": "Deletes a customer subscription object.",
@@ -844,11 +844,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "58492aec68b05b5e17bafa9fff374f9e",
+            "id": "b9552da3173cf8a9df228e37a83ab794",
             "name": "Returns a list of customField objects",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers\/customfields",
             "description": "This end point returns your Customer custom field definitions.\r\n\r\nCustomer custom fields are different than Appointment custom fields. Appointment custom fields are\r\nstored with each appointment. They are used when the information collected during the booking is specific\r\nto a particular visit, where as Customer custom fields are stored with the customer profile. \r\n\r\nUse the key field, and type to determine how to update field values\r\nin POST \/consumer\/v1\/customers and PUT \/consumer\/v1\/customers",
@@ -882,11 +882,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "df132e1b069ce63974a8385626977058",
+            "id": "a95a36af109bf1bf540eaee0c363bcc8",
             "name": "Returns a list of lead questions",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers\/registrationfields",
             "description": "This end point returns your Customer Registration fields.\r\n\r\nCustomer custom fields are different than Appointment custom fields. Appointment custom fields are\r\nstored with each appointment. They are used when the information collected during the booking is specific\r\nto a particular visit, where as Customer custom fields are stored with the customer profile.",
@@ -913,11 +913,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "a680f5c154b055618f70c3fe21c55dee",
+            "id": "838c95089f6843e242ef9e77499ee71d",
             "name": "Returns a list of customers.",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers\/plans",
             "description": "The results are returned in pages. Use the offset and limit parameters to control the page start and size. Default offset is 0, and limit is 20.\r\nUse the other query parameters to optionally filter the results list.",
@@ -965,11 +965,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "7986df0311fd9319de89714d6a1ba822",
+            "id": "30e19f87b7597ffc86c2f5b789561dbf",
             "name": "Returns a customer object.",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers\/plans\/{id}",
             "description": "The result returned is a single customer object. An id is required to find the customer. Find customer id's using either the GET consumer\/v1\/customers end point,\r\nor the GET consumer\/v1\/appointments end point. A customer object is automatically created with the first booking if it doesn't already exist.",
@@ -996,11 +996,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "9fcf10661fc0ac2fa606220a8509d24c",
+            "id": "46868ced73b58a2239e62b1421c21960",
             "name": "Returns a list of customer booking limits.",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers\/{id}\/planlimits\/{serviceId}\/{resourceId}\/{dateTimeTz}",
             "description": "The result returned is list of limit rules as defined by the subscribed customer plan along with Booking Counts\/Minutes\r\nThe results indicate the remaining bookings count \/ minutes. Use the results in your app to determine if the customer should continue booking.\r\nYou can enforce Limits in periods: Daily,Weekly,Monthly and for maximum total limits. Maximum total limits is based on six months prior to\r\nthe DateTimeTz and six months after the DateTimeTz. Daily, Weekly and Monthly limits are based ",
@@ -1048,11 +1048,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "f9741cd748d559e423461d9dcc9bd4d1",
+            "id": "6d97fafe3fe6510e47c75e6c67977bb8",
             "name": "Returns a list of customer subscriptions.",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers\/subscriptions",
             "description": "The results are returned in pages. Use the offset and limit parameters to control the page start and size. Default offset is 0, and limit is 20.\r\nUse the other query parameters to optionally filter the results list.",
@@ -1093,11 +1093,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "090bfa642beba303f0a931ebd2a7d6a7",
+            "id": "1ebae632cea79292adac52967bc8c66e",
             "name": "Returns a customer subscription object.",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers\/{id}\/subscriptions",
             "description": "The result returned is a single customer subscription object. A customer can only be subsribed to a single Customer Plan",
@@ -1124,11 +1124,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "4c77e7950644386848d635b39f836c01",
+            "id": "5481da8ad8e418d0555ffc0cdcd2beb2",
             "name": "Creates a new customer subscription object.",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers\/{id}\/subscriptions",
             "description": "Use this endpoint to create a new customer subscription.",
@@ -1162,11 +1162,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "b77517d3e9540b529bc9a1cd200710d0",
+            "id": "9d454a05ae6234d6343a4177f5fbb15b",
             "name": "Returns a customer subscription object.",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers\/subscriptions\/{id}",
             "description": "The result returned is a single customer subscription object.",
@@ -1193,11 +1193,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "775922459ea96062a601331452dc2813",
+            "id": "c4ab8feeea7b89b1f6cf60c89d27ddf9",
             "name": "Updates a customer subscription object.",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers\/subscriptions\/{id}",
             "description": "Use this endpoint to update customer subscription information.",
@@ -1231,11 +1231,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "c3068f580e0114ad7509561d526d8aca",
+            "id": "406320c8ad6138ad3f6e703d943db603",
             "name": "Deletes a list of lead questions",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers\/subscriptions\/{id}",
             "description": "Deletes a list of lead questions",
@@ -1262,11 +1262,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "a929214f560eca7d5dc8f1ffa58a28f3",
+            "id": "7fe9cf319bc7b13a03b1b8344bd23ac3",
             "name": "Returns a list of country objects",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers\/countries",
             "description": "Returns a list of countries with the associated country code. Country codes are based on the 2 character ANSI standard.",
@@ -1285,11 +1285,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "af4932f60fd9d05cfdc7ab2492b73cfc",
+            "id": "1652ba479a5f397622172356f983ff4c",
             "name": "Returns a list of state objects",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/customers\/states",
             "description": "Returns a list of states with the associated state code and country. \r\n\r\nContact us if states for your countries of operation are not currently loaded.",
@@ -1316,11 +1316,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "7d5c0ec736af797eed785192a75df9c9",
+            "id": "f2325ab392a1477286b6d8b71875d1cf",
             "name": "Returns a list of business locations.",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/locations",
             "description": "Use this api end point if you have multiple business locations in your company.\r\nThe results are returned in pages. Use the offset and limit parameters to control the page start and size. Default offset is 0, and limit is 20.\r\nUse the other query parameters to optionally filter the results list.",
@@ -1361,11 +1361,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "0d31d5f8a7e1c0414682c13f3662aaed",
+            "id": "1a10c08ac2f17d01b3a98e0684a6286d",
             "name": "Returns a business location object.",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/locations\/{id}",
             "description": "The result returned is a single location object. An id is required to find the location. Find location id's using the GET consumer\/v1\/locations end point,",
@@ -1392,11 +1392,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "1e75d3175ba6a614990d83bf61e4842e",
+            "id": "f3f87eb2a8f97bafbab08a95716781ef",
             "name": "Returns a list of resources.",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/resources",
             "description": "The results are returned in pages. Use the offset and limit parameters to control the page start and size. Default offset is 0, and limit is 20.\r\nUse the other query parameters to optionally filter the results list.",
@@ -1465,11 +1465,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "a7e98053e61dc14ad613ac81bcfc9600",
+            "id": "9f9cbc9e18c48afcd5007eb214eb873c",
             "name": "Returns a resource object.",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/resources\/{id}",
             "description": "The result returned is a single resource object. An id is required to find the resource. Find customer id's using either the GET consumer\/v1\/resources end point,\r\nor the GET consumer\/v1\/appointments end point.",
@@ -1496,11 +1496,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "e9edebbf9846e0a704ed23243add32ba",
+            "id": "bbf5b7dfa6d417ebc201e6fba76160eb",
             "name": "Returns a list of resource services.",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/resources\/{id}\/services",
             "description": "The results are returned in pages. Use the offset and limit parameters to control the page start and size. Default offset is 0, and limit is 20.\r\nUse the other query parameters to optionally filter the results list.\r\nResource services are used to explicitly define the services that can be booked for a resource. If no resource services are defined then by\r\ndefault all services can be booked for the resource.",
@@ -1541,11 +1541,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "0169b95832f186a5a3659c1d98c5b50d",
+            "id": "95bf5a5f0d6ffbfdbfb82dfdcb3b498c",
             "name": "Returns a list of service groups.",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/servicegroups",
             "description": "The results are returned in pages. Use the offset and limit parameters to control the page start and size. Default offset is 0, and limit is 20.\r\nUse the other query parameters to optionally filter the results list.",
@@ -1586,11 +1586,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "655a849f76496a544132afecb631fa33",
+            "id": "8438ce317639a5bdaae0944b06b5200a",
             "name": "Returns a serviceGroup object.",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/servicegroups\/{id}",
             "description": "The result returned is a single serviceGroup object. An id is required to find the serviceGroup. Find serviceGroup id's using \r\nthe GET consumer\/v1\/servicegroups end point,",
@@ -1617,11 +1617,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "1e031db89bc2de605a2b68fc7d80c53e",
+            "id": "08bd48857260fa8d8045ae1fd44bef66",
             "name": "Returns a list of services.",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/services",
             "description": "The results are returned in pages. Use the offset and limit parameters to control the page start and size. Default offset is 0, and limit is 20.\r\nUse the other query parameters to optionally filter the results list.",
@@ -1676,11 +1676,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "9301d2f7465076deb9bd57ea2d4a7af3",
+            "id": "e3d40244668eb71c2984a87bdc83766a",
             "name": "Returns a service object.",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/services\/{id}",
             "description": "The result returned is a single service object. An id is required to find the service. Find service id's using either the GET consumer\/v1\/service end point,\r\nor the GET consumer\/v1\/appointments end point.",
@@ -1707,11 +1707,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "2ac751ecbd839b802ef6b8667820ef81",
+            "id": "f86e66b2399b8f4d7e2cc90bc1d8cad9",
             "name": "Returns a list of resources.",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/services\/{id}\/resources",
             "description": "The results are returned in pages. Use the offset and limit parameters to control the page start and size. Default offset is 0, and limit is 20.\r\nUse the other query parameters to optionally filter the results list.",
@@ -1752,11 +1752,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         },
         {
-            "id": "219eeeb15d06e77b32dd957210d71f67",
+            "id": "deda48235e447bcca7607ba77bdcdcf8",
             "name": "Returns a list of customers.",
             "url": "httpsapi.onsched.com\/\/consumer\/v1\/settings",
             "description": "The results are returned in pages. Use the offset and limit parameters to control the page start and size. Default offset is 0, and limit is 20.\r\nUse the other query parameters to optionally filter the results list.",
@@ -1783,7 +1783,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "dea6e8e0c40e38bfdb50d0ede821f299",
+            "collectionId": "5c67f20e65a45c165cb241c3ae41fb09",
             "rawModeData": ""
         }
     ]
